@@ -1,0 +1,90 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
+public class DisplayFrame extends Application {
+	List<StackPane> rectangles = new ArrayList<StackPane>();
+	SearchEngine engine;
+
+	@Override
+	public void init() throws Exception {
+		
+		int[] array = { 1, 6, 4, 19, 22, 17, 13, 20 };
+		int size = array.length;
+//		int targetIndex = 1;
+		int target = 4;
+//		int target = 100;
+		engine = new SearchEngine(array, target);
+
+		for (int i = 0; i < size; i++) {
+			StackPane tempPane = new StackPane();
+			Text tempText = new Text("" + array[i]);
+			Rectangle temp = new Rectangle();
+			temp.setWidth(20);
+			temp.setHeight(20);
+			temp.setFill(Color.BISQUE);
+//			if (i == targetIndex)
+//				temp.setFill(Color.RED);
+			tempPane.getChildren().addAll(temp, tempText);
+			rectangles.add(tempPane);
+		}
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		HBox controlBlock = new HBox();
+		controlBlock.setPadding(new Insets(5, 10, 5, 20));
+		controlBlock.setSpacing(5);
+
+		for (StackPane rec : rectangles) {
+			controlBlock.getChildren().add(rec);
+		}
+
+		Scene scene = new Scene(controlBlock, 500, 250);
+
+		primaryStage.setTitle("Hello");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				int loc = engine.getCurrentPosition();
+				// highlight
+				StackPane currentPane = (StackPane) controlBlock.getChildren().get(loc);
+				currentPane.setVisible(false);
+//				Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
+//				rec.setFill(Color.GREEN);
+				
+				boolean status = engine.check();
+				if (status == true) {
+					// highlight
+					rec.setFill(Color.BLUE);
+				}
+				
+				if(engine.isFinished())
+					cancel();
+				engine.goNext();
+			}
+		};
+		
+		timer.schedule(task, 0, 1000);
+
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

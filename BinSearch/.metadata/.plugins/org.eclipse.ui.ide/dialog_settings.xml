@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/thanh/A-Pathfinding-Visualization"/>
+		<item value="/home/thanh/Downloads/BinSearch/src"/>
+		<item value="/home/thanh/Downloads/BinSearch"/>
+		<item value="/home/thanh/Downloads/SeqSearch"/>
+		<item value="/home/thanh/Downloads/SeqSearch/src"/>
+	</list>
+</section>
