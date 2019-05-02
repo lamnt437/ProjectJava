@@ -17,7 +17,7 @@ public class SearchEngine {
 	}
 	
 	public boolean isFinished() {
-		if(currentPosition == array.length - 1 ||
+		if(currentPosition == array.length ||
 				target == array[currentPosition])
 			return true;
 		return false;
@@ -27,6 +27,28 @@ public class SearchEngine {
 		if(!isFinished())
 			currentPosition++;
 	}
+
+	public int getTarget() {
+		return target;
+	}
+
+	public void setTarget(int target) {
+		this.target = target;
+	}
+
+	public int[] getArray() {
+		return array;
+	}
+
+	public void setArray(int[] array) {
+		this.array = array;
+	}
+
+	public void setCurrentPosition(int currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+	
+	
 	
 //	public int search(int array[], int target) {
 //		int size = array.length;

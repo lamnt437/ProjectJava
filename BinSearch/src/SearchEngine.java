@@ -50,6 +50,36 @@ public class SearchEngine {
 	public void goNext() {
 		currentPosition = (start + end) / 2;
 	}
+
+	public int[] getArray() {
+		return array;
+	}
+
+	public void setArray(int[] array) {
+		this.array = array;
+	}
+
+	public int getTarget() {
+		return target;
+	}
+
+	public void setTarget(int target) {
+		this.target = target;
+	}
+
+	public void setCurrentPosition(int currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	
+	
 	
 //	public int search(int array[], int target) {
 //		

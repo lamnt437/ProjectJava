@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<HBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</HBox>
-
+<AnchorPane fx:id="seqSearchAnchorPane" prefHeight="254.0" prefWidth="647.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="SeqSearchController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <GridPane fx:id="gridpane" layoutX="0.0" layoutY="0.0" prefHeight="205.0" prefWidth="671.0">
+      <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+          <children>
+            <HBox id="HBox" alignment="CENTER" layoutX="266.0" layoutY="23.0" spacing="5.0">
+              <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Input" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+                <TextField fx:id="input" alignment="CENTER" prefWidth="76.0" />
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+        <HBox fx:id="arrayRec" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="textSearch" alignment="CENTER" prefWidth="708.0" text="Searching..." GridPane.columnIndex="0" GridPane.rowIndex="0" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="647.0" minWidth="10.0" prefWidth="647.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="0.0" prefWidth="0.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <Button fx:id="btnStart" layoutX="239.0" layoutY="219.0" mnemonicParsing="false" onAction="#startSearch" text="Start" />
+    <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" layoutX="381.0" layoutY="219.0" mnemonicParsing="false" onAction="#initSearch" text="Initialize" />
+  </children>
+</AnchorPane>
