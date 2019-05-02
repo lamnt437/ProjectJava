@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<HBox prefHeight="271.0" prefWidth="436.9999000000025" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+	fx:controller="test.controller.TestController">
+  <!-- TODO Add Nodes -->
+  
+  <children>
+    <Button id="showDate" fx:id="showDateTime" mnemonicParsing="false" onAction="#showDateTime" text="Show Date Time" />
+    <TextField fx:id="textDateTime" prefWidth="200.0" />
+  </children>
+</HBox>
