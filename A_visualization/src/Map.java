@@ -161,4 +161,8 @@ public class Map {
 
         return hCost;
     }
+    
+    public void reset() {
+    	borderList = new ArrayList<Node>();
+    }
 }

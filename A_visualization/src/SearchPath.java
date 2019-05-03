@@ -55,12 +55,17 @@ public class SearchPath {
 		return neighbors;
 	}
     
+    public Node getCurNode() {
+    	return curNode;
+    }
+    
     public void reset() {
     	openList = new ArrayList<Node>();
         closedList = new ArrayList<Node>();
         path = new ArrayList<Node>();
         neighbors = new ArrayList<Node>();
         curNode = null;
+        isFound = false;
     }
     
     
@@ -159,101 +164,7 @@ public class SearchPath {
             Collections.reverse(path);
             isFound = true;
     	}
-    }
-    
-//    public ArrayList<Node> searchPath(){
-//        // pseudo-code
-//        ArrayList<Node> path = new ArrayList<Node>();
-//
-//        Node startNode = map.getStartNode();
-//        Node endNode = map.getEndNode();
-
-//        //enqueue startNode to open List
-//        openList.add(startNode);
-
-//        //init cur
-//        Node cur = null;
-
-//        while(!openList.isEmpty()) {
-
-//            //dequeue node with smallest f from open List
-//            Collections.sort(openList);
-//            cur = openList.remove(0);
-
-//            //if cur is target then return
-//            if(cur.equals(endNode))
-//                break;
-
-            //else
-
-//            neighbors = map.getNeighbors(cur);
-//
-//            for(Node neighbor : neighbors) {
-//                //calculate g
-//                int currentG = cur.getG() + 1;
-//
-//
-//                //find if exist in open list then compare with current g cost
-//                Node foundNode = findNode(openList, neighbor);
-//
-//                if(foundNode != null) {
-//                    neighbor = foundNode;
-//                    //update directly on neighbor
-//
-//                    //compare g cost
-//                    int oldG = neighbor.getG();
-//                    if(oldG <= currentG) continue;
-//                }
-//
-//                //else find if exist in closed list
-//                else {
-//
-//                    foundNode = findNode(closedList, neighbor);
-//                    if(foundNode != null) {
-//                        neighbor = foundNode;
-//
-//                        //compare g cost
-//                        int oldG = neighbor.getG();
-//                        if(oldG <= currentG) continue;
-//
-//                        //move this neighbor to openList
-//                        closedList.remove(neighbor);
-//                        openList.add(neighbor);
-//                    }
-//
-//                    else {
-//                        int hCost = map.calculateH(neighbor);
-//                        neighbor.setH(hCost);
-//                        openList.add(neighbor);
-//                    }
-//                }
-//
-//                neighbor.setG(currentG);
-//                neighbor.setF();
-//                neighbor.setParent(cur);
-//            }
-
-//            //add cur to closed list
-//            closedList.add(cur);
-
-//        }
-
-//        if(!cur.equals(endNode))
-//            return null;
-
-//        path.add(cur);
-//        Node foundParent = cur.getParent();
-//        while(foundParent != null) {
-//            path.add(foundParent);
-//            foundParent = foundParent.getParent();
-//        }
-//
-//        //reverse path
-//        Collections.reverse(path);
-
-//        return path;
-//    }
-    
+    }   
     
 
 	public void printPath(ArrayList<Node> path) {
