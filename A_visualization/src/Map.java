@@ -23,6 +23,19 @@ public class Map {
         this.borderList = borderList;
     }
     
+    public boolean addBorder(Node newNode) {
+    	if(newNode != null) {
+	    	for(Node node : borderList) {
+	    		if(node.equals(newNode)) {
+	    			return false;
+	    		}
+	    	}
+	    	borderList.add(newNode);
+	    	return true;
+    	}
+    	return false;
+    }
+    
     public Node getStartNode() {
         return startNode;
     }

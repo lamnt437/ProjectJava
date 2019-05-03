@@ -16,6 +16,7 @@ public class Main extends Application {
             
             stage.setTitle("A* Path Searching Algorithm Visualization");
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
  
         } catch(Exception e) {

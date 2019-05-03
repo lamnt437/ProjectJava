@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -28,9 +29,12 @@ public class SearchController implements Initializable {
 	@FXML
 	private Button stopBtn;
 	
-	int size = 10;
-	Rectangle[][] recs = new Rectangle[size][size];
-	SearchPath engine;
+	private int size = 10;
+	private int recSize = 50;
+	private Rectangle[][] recs = new Rectangle[size][size];
+	private SearchPath engine;
+	private Map map = new Map();
+	
 	
 	Timeline timeline = new Timeline();
 	
@@ -44,34 +48,34 @@ public class SearchController implements Initializable {
 	public void runSearch(ActionEvent event) {
 		for(int i = 0; i < size; i++) {		//row
         	for(int j = 0; j < size; j++) {	//col
-        		recs[i][j] = new Rectangle();
-        		recs[i][j].setWidth(48);
-        		recs[i][j].setHeight(48);
-				recs[i][j].setFill(Color.WHITE);
+        		recs[j][i] = new Rectangle();
+        		recs[j][i].setWidth(48);
+        		recs[j][i].setHeight(48);
+        		recs[j][i].setFill(Color.WHITE);
 		        
 		        
-		        GridPane.setRowIndex(recs[i][j], i);
-		        GridPane.setColumnIndex(recs[i][j], j);
+		        GridPane.setRowIndex(recs[j][i], i);
+		        GridPane.setColumnIndex(recs[j][i], j);
 		        
-		        gridpane.getChildren().addAll(recs[i][j]);
+		        gridpane.getChildren().add(recs[j][i]);
         	}
         }
 		
 		/////////////////////////////////////////////////////working
 		        
-		Map map = new Map();
+		
 		
 		/* init map */
 		
 		ArrayList<Node> allNodes = new ArrayList<Node>();
 		for(int i = 0; i < size; i++) {
-		for(int j = 0; j < size; j++) {
-		Node tempNode = new Node();
-		tempNode.setX(i);
-		tempNode.setY(j);
-		tempNode.setParent(null);
-		allNodes.add(tempNode);
-		}
+			for(int j = 0; j < size; j++) {
+				Node tempNode = new Node();
+				tempNode.setX(i);
+				tempNode.setY(j);
+				tempNode.setParent(null);
+				allNodes.add(tempNode);
+			}
 		}
 		
 		Node startNode = new Node();
@@ -84,13 +88,13 @@ public class SearchController implements Initializable {
 		endNode.setY(9);
 		map.setEndNode(endNode);
 		
-		ArrayList<Node> borderList = new ArrayList<Node>();
-		Node obstacle = new Node();
-		obstacle.setX(0);
-		obstacle.setY(4);
-		borderList.add(obstacle);
-		borderList.add(new Node(1, 6));
-		borderList.add(new Node(6, 9));
+//		ArrayList<Node> borderList = new ArrayList<Node>();
+//		Node obstacle = new Node();
+//		obstacle.setX(0);
+//		obstacle.setY(4);
+//		borderList.add(obstacle);
+//		borderList.add(new Node(1, 6));
+//		borderList.add(new Node(6, 9));
 		
 		startNode.setH(map.calculateH(startNode));
 		startNode.setG(0);
@@ -98,7 +102,6 @@ public class SearchController implements Initializable {
 		endNode.setH(map.calculateH(endNode));
 		
 		map.setAllNodes(allNodes);
-		map.setBorderList(borderList);
 		map.setStartNode(startNode);
 		map.setEndNode(endNode);
 		
@@ -199,8 +202,29 @@ public class SearchController implements Initializable {
 		timeline.stop();
 	}
 	
-	public void gridClicked(ActionEvent event) {
-		System.out.println("Grid clicked!");
+	public void gridClicked(MouseEvent mouseEvent) {
+//		System.out.println("Grid clicked!");
+		double xPos = mouseEvent.getX();
+		double yPos = mouseEvent.getY();
+		System.out.printf("(%.2f, %.2f)\n", xPos, yPos);
+		
+		int x = ((int)xPos) / recSize;
+		int y = ((int)yPos) / recSize;
+		
+		Node newNode = new Node(x, y);
+		boolean addStatus = map.addBorder(newNode);
+		if(addStatus) {
+			recs[y][x] = new Rectangle();
+			recs[y][x].setWidth(48);
+			recs[y][x].setHeight(48);
+			recs[y][x].setFill(Color.BLACK);
+			
+			GridPane.setRowIndex(recs[y][x], y);
+	        GridPane.setColumnIndex(recs[y][x], x);
+	        
+	        gridpane.getChildren().add(recs[y][x]);
+		}
+		
 	}
 	
 	public boolean isInList(ArrayList<Node> list, Node n) {
