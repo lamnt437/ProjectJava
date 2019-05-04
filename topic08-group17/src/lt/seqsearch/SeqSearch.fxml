@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane fx:id="seqSearchAnchorPane" disable="false" focusTraversable="false" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="325.0" prefWidth="647.0" snapToPixel="true" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lt.seqsearch.SeqSearchController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <GridPane fx:id="gridpane" alignment="CENTER" disable="false" layoutX="0.0" layoutY="0.0" prefHeight="205.0" prefWidth="647.0">
+      <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+          <children>
+            <HBox id="HBox" alignment="CENTER" layoutX="266.0" layoutY="23.0" spacing="5.0">
+              <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Input" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+                <TextField fx:id="input" alignment="CENTER" prefWidth="76.0" />
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+        <HBox fx:id="arrayRec" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="textSearch" alignment="CENTER" disable="true" editable="true" opacity="1.0" prefWidth="708.0" text="Waiting..." GridPane.columnIndex="0" GridPane.rowIndex="0" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="647.0" minWidth="10.0" prefWidth="647.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="0.0" prefWidth="0.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <GridPane layoutX="156.0" layoutY="208.0" prefWidth="391.0">
+      <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <children>
+            <HBox id="HBox" alignment="CENTER" layoutX="0.0" layoutY="1.0" spacing="5.0">
+              <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: BISQUE;" width="37.0" />
+                <Label text="Not consider" />
+              </children>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" layoutX="145.0" layoutY="1.0" spacing="5.0">
+              <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: GREEN;" width="37.0" />
+                <Label text="Checking" />
+              </children>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" layoutX="285.0" layoutY="1.0" spacing="5.0">
+              <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: BLUE;" width="37.0" />
+                <Label text="Found" />
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+          <children>
+            <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="0.0" mnemonicParsing="false" onAction="#initSearch" text="Initialize" />
+            <Button fx:id="btnStart" layoutX="234.0" layoutY="0.0" mnemonicParsing="false" onAction="#startSearch" text="Start" />
+          </children>
+        </AnchorPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="391.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="0.0" prefWidth="0.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+</AnchorPane>
