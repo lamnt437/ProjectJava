@@ -1,13 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -19,9 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
-public class SeqSearchController {
+public class BinSearchController {
 	@FXML
 	private GridPane gridpane;
 	
@@ -84,58 +80,76 @@ public class SeqSearchController {
 		}
 	}
 	
+	
 	public void startSearch() {
-		
 		if (input.getText() == null || input.getText().trim().isEmpty()) {
 			textSearch.setText("You must enter input first!");
 		} else if (flag == 0) {
 			textSearch.setText("You must enter initialize first!");
 		} else {
 			target = Integer.parseInt(input.getText());
-			engine = new SearchEngine(array, target);
+	    	System.out.println(target);
+	    	engine = new SearchEngine(array, target);
 	    	Timer timer = new Timer();
 			TimerTask task = new TimerTask() {
 				@Override
 				public void run() {
 					int loc = engine.getCurrentPosition();
+					int start = engine.getStart();
+					int end = engine.getEnd();
+					// highlight
+					StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
+					Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
+					rec.setFill(Color.GREEN);
+					
 					try {
 						Thread.sleep(1000);
-						// highlight
-						StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
-						Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
-						boolean status = engine.check();
-						rec.setFill(Color.GREEN);
-						Thread.sleep(1000);
-						if (status == true) {
+						
+						int status = engine.check();
+						
+						if (status == 0) {
 							// highlight
 							rec.setFill(Color.BLUE);
-							String noti = engine.getTarget() + "=" + engine.getArray()[engine.getCurrentPosition()];
+						}
+						else if(status == -1) {
+							//if target < current
+							String noti = engine.getTarget() + "<=" + engine.getArray()[engine.getCurrentPosition()];
 							textSearch.setText(noti);
 							Thread.sleep(1000);
-							textSearch.setText("Found!");
-						} else {
-							String noti = engine.getTarget() + "!=" + engine.getArray()[engine.getCurrentPosition()];
+							for(int i = loc; i <= end; i++) {
+								currentPane = (StackPane) arrayRec.getChildren().get(i);
+								currentPane.setVisible(false);
+							}
+						}
+						else {
+							//if target > current
+							String noti = engine.getTarget() + ">=" + engine.getArray()[engine.getCurrentPosition()];
 							textSearch.setText(noti);
 							Thread.sleep(1000);
-							currentPane.setVisible(false);
+							for(int i = start; i <= loc; i++) {
+								currentPane = (StackPane) arrayRec.getChildren().get(i);
+								currentPane.setVisible(false);
+							}
 						}
 						
-						if(engine.isFinished())
-							cancel();
-						else {
-							if (engine.getCurrentPosition() == (size - 1)) {
+						if(engine.isFinished()) {
+							if (engine.getStart()> engine.getEnd()) {
 								textSearch.setText("Not Found!");
-								cancel();
+							} else {
+								
 							}
+							cancel();
+						} else {
 							engine.goNext();
 						}
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 				}
 			};
 			timer.schedule(task, 0, 1000);
-		}   	
+		}
 	}
 }

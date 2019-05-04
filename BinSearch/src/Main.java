@@ -11,11 +11,12 @@ public class Main extends Application {
         try {
             // Read file fxml and draw interface
             Parent root = FXMLLoader.load(getClass()
-                    .getResource("SeqSearch.fxml"));
+                    .getResource("BinSearch.fxml"));
  
             
             stage.setTitle("Sequential Searching Algorithm Visualization");
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
  
         } catch(Exception e) {

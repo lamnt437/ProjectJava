@@ -6,5 +6,5 @@
 /Main.class
 /SeqSearchController$1.class
 /SeqSearchController.class
-/.gitignore
-/SeqSearch.fxml
+/BinSearchController$1.class
+/BinSearchController.class
