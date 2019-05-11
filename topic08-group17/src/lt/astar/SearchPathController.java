@@ -1,6 +1,9 @@
 package lt.astar;
 
 import general.Controller;
+import general.NodeCircle;
+import general.NodeRectangle;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -16,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class SearchPathController extends Controller implements Initializable {
@@ -26,7 +28,7 @@ public class SearchPathController extends Controller implements Initializable {
 	
 	private int size = 10;
 	private int recSize = 50;
-	private Rectangle[][] recs = new Rectangle[size][size];
+	private NodeCircle[][] recs = new NodeCircle[size][size];
 	private SearchPathEngine engine;
 	private Map map = new Map();
 	private boolean paused = false;
@@ -47,16 +49,13 @@ public class SearchPathController extends Controller implements Initializable {
 			/* add background */
 			for(int i = 0; i < size; i++) {		//row
 	        	for(int j = 0; j < size; j++) {	//col
-	        		recs[j][i] = new Rectangle();
-	        		recs[j][i].setWidth(48);
-	        		recs[j][i].setHeight(48);
-	        		recs[j][i].setFill(Color.WHITE);
+	        		recs[j][i] = new NodeCircle("10", Color.WHITE, (recSize - 2)/2);
 			        
 			        
-			        GridPane.setRowIndex(recs[j][i], i);
-			        GridPane.setColumnIndex(recs[j][i], j);
+			        GridPane.setRowIndex(recs[j][i].getNode(), i);
+			        GridPane.setColumnIndex(recs[j][i].getNode(), j);
 			        
-			        gridpane.getChildren().add(recs[j][i]);
+			        gridpane.getChildren().add(recs[j][i].getNode());
 	        	}
 	        }
 			/*end background*/
@@ -102,7 +101,7 @@ public class SearchPathController extends Controller implements Initializable {
 	        		temp.setX(i);
 	        		temp.setY(j);
 	        		if(map.isBorder(temp))
-	        			recs[i][j].setFill(Color.BLACK);
+	        			recs[i][j].setColor(Color.BLACK);
 	        	}
 	        }	        
 	        /* end highlight border*/
@@ -131,13 +130,13 @@ public class SearchPathController extends Controller implements Initializable {
 	                    		temp.setX(i);
 	                    		temp.setY(j);
 	                    		if(isInList(openList, temp))
-	                    			recs[i][j].setFill(Color.GREEN);
+	                    			recs[i][j].setColor(Color.GREEN);
 	                    		if(isInList(closedList, temp))
-	                    			recs[i][j].setFill(Color.RED);
+	                    			recs[i][j].setColor(Color.RED);
 	                    		if(isInList(neighbors, temp))
-	                    			recs[i][j].setFill(Color.BLUE);
+	                    			recs[i][j].setColor(Color.BLUE);
 	                    		if(curNode.equals(temp))
-	                    			recs[i][j].setFill(Color.PINK);
+	                    			recs[i][j].setColor(Color.PINK);
 	                    	}
 	                    }
 	                }
@@ -151,7 +150,7 @@ public class SearchPathController extends Controller implements Initializable {
 	                        		temp.setX(i);
 	                        		temp.setY(j);
 	                        		if(isInList(path, temp))
-	                        			recs[i][j].setFill(Color.YELLOW);
+	                        			recs[i][j].setColor(Color.YELLOW);
 	                        	}
 	                        }
 	                    	textSearch.setText("Found path!");
@@ -210,15 +209,12 @@ public class SearchPathController extends Controller implements Initializable {
 		Node newNode = new Node(x, y);
 		boolean addStatus = map.addBorder(newNode);
 		if(addStatus) {
-			recs[y][x] = new Rectangle();
-			recs[y][x].setWidth(48);
-			recs[y][x].setHeight(48);
-			recs[y][x].setFill(Color.BLACK);
+			recs[y][x] = new NodeCircle(Color.BLACK, (recSize - 2)/2);
 			
-			GridPane.setRowIndex(recs[y][x], y);
-	        GridPane.setColumnIndex(recs[y][x], x);
+			GridPane.setRowIndex(recs[y][x].getNode(), y);
+	        GridPane.setColumnIndex(recs[y][x].getNode(), x);
 	        
-	        gridpane.getChildren().add(recs[y][x]);
+	        gridpane.getChildren().add(recs[y][x].getNode());
 		}
 		
 	}
