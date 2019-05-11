@@ -49,7 +49,7 @@ public class SearchPathController extends Controller implements Initializable {
 			/* add background */
 			for(int i = 0; i < size; i++) {		//row
 	        	for(int j = 0; j < size; j++) {	//col
-	        		recs[j][i] = new NodeCircle("10", Color.WHITE, (recSize - 2)/2);
+	        		recs[j][i] = new NodeCircle(Color.WHITE, (recSize - 2)/2);
 			        
 			        
 			        GridPane.setRowIndex(recs[j][i].getNode(), i);
@@ -129,14 +129,23 @@ public class SearchPathController extends Controller implements Initializable {
 	                    		Node temp = new Node();
 	                    		temp.setX(i);
 	                    		temp.setY(j);
-	                    		if(isInList(openList, temp))
+	                    		if(isInList(openList, temp)) {
+	                    			temp = getNode(openList, temp);
 	                    			recs[i][j].setColor(Color.GREEN);
-	                    		if(isInList(closedList, temp))
+	                    			recs[i][j].setLabel("" + temp.getF());
+	                    		}
+	                    			
+	                    		if(isInList(closedList, temp)) {
+	                    			temp = getNode(closedList, temp);
 	                    			recs[i][j].setColor(Color.RED);
-	                    		if(isInList(neighbors, temp))
+	                    			recs[i][j].setLabel("" + temp.getF());
+	                    		}
+	                    		if(isInList(neighbors, temp)) {
 	                    			recs[i][j].setColor(Color.BLUE);
-	                    		if(curNode.equals(temp))
+	                    		}
+	                    		if(curNode.equals(temp)) {
 	                    			recs[i][j].setColor(Color.PINK);
+	                    		}
 	                    	}
 	                    }
 	                }
@@ -226,4 +235,12 @@ public class SearchPathController extends Controller implements Initializable {
     	}
     	return false;
     }
+	
+	public Node getNode(ArrayList<Node> list, Node n) {
+		for(Node node : list) {
+    		if(n.equals(node))
+    			return node;
+    	}
+    	return null;
+	}
 }
