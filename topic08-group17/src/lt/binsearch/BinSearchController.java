@@ -1,4 +1,6 @@
 package lt.binsearch;
+
+import general.SearchArrayController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,37 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class BinSearchController {
-	@FXML
-	private GridPane gridpane;
-	
-	@FXML
-	private Button btnStart;
-	
-	@FXML
-	private Button btnStop;
-	
-	@FXML
-	private Button btnReset;
-	
-	@FXML
-	private TextField input;
-	
-	@FXML
-	private HBox arrayRec;
-	
-	@FXML
-	private TextField textSearch;
-	
-	@FXML
-	private Label labelSearch;
-	
-	int flag = 0;
-	int size = 10;
-	List<StackPane> rectangles = new ArrayList<StackPane>();
-	SearchEngine engine;
-	int[] array = new int[size];
-	int target = 1;
+public class BinSearchController extends SearchArrayController{
 	
 	public void createRectangles(int size) {
 		for (int i = 0; i < size; i++) {

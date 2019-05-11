@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class SearchController implements Initializable {
+public class SearchPathController implements Initializable {
 	@FXML
 	private GridPane gridpane;
 	
@@ -32,7 +32,7 @@ public class SearchController implements Initializable {
 	private Button stopBtn;
 	
 	@FXML
-	private TextField textInfo;
+	private TextField textSearch;
 	
 	private int size = 10;
 	private int recSize = 50;
@@ -52,7 +52,7 @@ public class SearchController implements Initializable {
 	}
 	
 	public void runSearch(ActionEvent event) {
-		textInfo.setText("Running...");
+		textSearch.setText("Running...");
 		if(!paused) {
 			
 			/* add background */
@@ -165,10 +165,10 @@ public class SearchController implements Initializable {
 	                        			recs[i][j].setFill(Color.YELLOW);
 	                        	}
 	                        }
-	                    	textInfo.setText("Found path!");
+	                    	textSearch.setText("Found path!");
 	                    }
 	                    else {
-	                    	textInfo.setText("Not found path!");
+	                    	textSearch.setText("Not found path!");
 	                    }
 	                	timeline.stop();
 	                }
@@ -188,12 +188,12 @@ public class SearchController implements Initializable {
 	
 	public void pauseSearch(ActionEvent event) {
 		paused = true;
-		textInfo.setText("Paused!");
+		textSearch.setText("Paused!");
 		timeline.pause();
 	}
 	
 	public void stopSearch(ActionEvent event) {
-		textInfo.setText("Stopped!");
+		textSearch.setText("Stopped!");
 		engine.reset();
 		timeline.stop();
 		paused = false;
@@ -205,7 +205,7 @@ public class SearchController implements Initializable {
 			engine.reset();
 		gridpane.getChildren().clear();
 		gridpane.setGridLinesVisible(true);
-		textInfo.setText("Click on the area above to add obstacles!");
+		textSearch.setText("Click on the area above to add obstacles!");
 		paused = false;
 	}
 	

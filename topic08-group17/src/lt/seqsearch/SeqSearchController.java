@@ -1,58 +1,16 @@
 package lt.seqsearch;
-import java.util.ArrayList;
-import java.util.List;
+
+import general.SearchArrayController;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
-public class SeqSearchController {
-	@FXML
-	private GridPane gridpane;
-	
-	@FXML
-	private Button btnStart;
-	
-	@FXML
-	private Button btnStop;
-	
-	@FXML
-	private Button btnReset;
-	
-	@FXML
-	private TextField input;
-	
-	@FXML
-	private HBox arrayRec;
-	
-	@FXML
-	private TextField textSearch;
-	
-	@FXML
-	private Label labelSearch;
-	
-	int flag = 0;
-	int size = 10;
-	List<StackPane> rectangles = new ArrayList<StackPane>();
-	SearchEngine engine;
-	int[] array = new int[size];
-	int target = 1;
+public class SeqSearchController extends SearchArrayController {
 	
 	public void createRectangles(int size) {
 		for (int i = 0; i < size; i++) {
