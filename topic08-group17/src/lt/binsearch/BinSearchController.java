@@ -64,44 +64,63 @@ public class BinSearchController extends SearchArrayController {
 					int loc = ((BinSearchEngine) engine).getCurrentPosition();
 					int start = ((BinSearchEngine) engine).getStart();
 					int end = ((BinSearchEngine) engine).getEnd();
+					textSearch.setText("Next middle = (" + start + " + " + end + " )/2 =" + loc);
 					// highlight
 					StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
 					Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
 					rec.setFill(Color.GREEN);
+					int target = engine.getTarget();
 					
 					try {
-						Thread.sleep(1000);
-						
+						Thread.sleep(3000);
 						int status = ((BinSearchEngine) engine).check();
 						
 						if (status == 0) {
 							// highlight
+							int mid = engine.getArray()[engine.getCurrentPosition()];
+							textSearch.setText("Comparing " + target + " and " + mid);
+							Thread.sleep(3000);
+							textSearch.setText(target  + " == " + mid);
+							Thread.sleep(3000);
 							rec.setFill(Color.BLUE);
+							textSearch.setText("Found!");
 						}
 						else if(status == -1) {
 							//if target < current
-							String noti = engine.getTarget() + "<=" + engine.getArray()[engine.getCurrentPosition()];
-							textSearch.setText(noti);
-							Thread.sleep(1000);
+							int mid = engine.getArray()[engine.getCurrentPosition()];
+							textSearch.setText("Comparing " + target + " and " + mid);
+							Thread.sleep(3000);
+							textSearch.setText(target  + " < " + mid);
+							Thread.sleep(3000);
+							textSearch.setText("Eliminate right side of array and then check left side of array");
+							Thread.sleep(3000);
 							for(int i = loc; i <= end; i++) {
 								currentPane = (StackPane) arrayRec.getChildren().get(i);
-								currentPane.setVisible(false);
+								rec = (Rectangle) currentPane.getChildren().get(0);
+								rec.setFill(Color.RED);
 							}
 						}
 						else {
 							//if target > current
-							String noti = engine.getTarget() + ">=" + engine.getArray()[engine.getCurrentPosition()];
-							textSearch.setText(noti);
-							Thread.sleep(1000);
+							int mid = engine.getArray()[engine.getCurrentPosition()];
+							textSearch.setText("Comparing " + target + " and " + mid);
+							Thread.sleep(3000);
+							textSearch.setText(target  + " > " + mid);
+							Thread.sleep(3000);
+							textSearch.setText("Eliminate left side of array and then check right side of array");
+							Thread.sleep(3000);
 							for(int i = start; i <= loc; i++) {
 								currentPane = (StackPane) arrayRec.getChildren().get(i);
-								currentPane.setVisible(false);
+								rec = (Rectangle) currentPane.getChildren().get(0);
+								rec.setFill(Color.RED);
 							}
 						}
 						
 						if(engine.isFinished()) {
-							if (((BinSearchEngine) engine).getStart()> ((BinSearchEngine) engine).getEnd()) {
-								textSearch.setText("Not Found!");
+							if (((BinSearchEngine) engine).getStart() > ((BinSearchEngine) engine).getEnd()) {
+								textSearch.setText("There is no element left!");
+								Thread.sleep(3000);
+								textSearch.setText(target + " is not found!");
 							} else {
 								
 							}
@@ -116,7 +135,7 @@ public class BinSearchController extends SearchArrayController {
 					
 				}
 			};
-			timer.schedule(task, 0, 1000);
+			timer.schedule(task, 0, 3000);
 		}
 	}
 }

@@ -58,32 +58,43 @@ public class SeqSearchController extends SearchArrayController {
 				public void run() {
 					int loc = ((SeqSearchEngine) engine).getCurrentPosition();
 					try {
-						Thread.sleep(1000);
+						textSearch.setText("Start traversing the array.");
+						Thread.sleep(3000);
+						int target = engine.getTarget();
+						Thread.sleep(3000);
 						// highlight
 						StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
 						Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
 						boolean status = ((SeqSearchEngine) engine).check();
 						rec.setFill(Color.GREEN);
-						Thread.sleep(1000);
+						Thread.sleep(3000);
 						if (status == true) {
 							// highlight
+							int cur = engine.getArray()[engine.getCurrentPosition()];
+							textSearch.setText("Checking if " + target + " = " + cur);
+							Thread.sleep(3000);
+							textSearch.setText(target + "==" + cur);
+							Thread.sleep(3000);
 							rec.setFill(Color.BLUE);
-							String noti = engine.getTarget() + "=" + engine.getArray()[engine.getCurrentPosition()];
-							textSearch.setText(noti);
-							Thread.sleep(1000);
 							textSearch.setText("Found!");
 						} else {
-							String noti = engine.getTarget() + "!=" + engine.getArray()[engine.getCurrentPosition()];
-							textSearch.setText(noti);
-							Thread.sleep(1000);
-							currentPane.setVisible(false);
+							int cur = engine.getArray()[engine.getCurrentPosition()];
+							textSearch.setText("Checking if " + target + " = " + cur);
+							Thread.sleep(3000);
+							textSearch.setText(target + "!=" + cur);
+							Thread.sleep(3000);
+							rec.setFill(Color.RED);
+							Thread.sleep(3000);
+							textSearch.setText("Go to the next element.");
 						}
 						
 						if(engine.isFinished())
 							cancel();
 						else {
 							if (engine.getCurrentPosition() == (size - 1)) {
-								textSearch.setText("Not Found!");
+								textSearch.setText("There is no element left!");
+								Thread.sleep(3000);
+								textSearch.setText(target + " is not found!");
 								cancel();
 							}
 							engine.goNext();
@@ -94,7 +105,7 @@ public class SeqSearchController extends SearchArrayController {
 					}
 				}
 			};
-			timer.schedule(task, 0, 1000);
+			timer.schedule(task, 0, 3000);
 		}   	
 	}
 }

@@ -34,7 +34,7 @@
         <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
-    <GridPane layoutX="156.0" layoutY="208.0" prefWidth="391.0">
+    <GridPane layoutX="85.0" layoutY="205.0" prefWidth="496.0">
       <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <children>
@@ -52,6 +52,8 @@
             </HBox>
             <HBox id="HBox" alignment="CENTER" layoutX="285.0" layoutY="1.0" spacing="5.0">
               <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: RED;" width="37.0" />
+                <Label text="Eliminated" />
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: BLUE;" width="37.0" />
                 <Label text="Found" />
               </children>
@@ -60,13 +62,13 @@
         </AnchorPane>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
           <children>
-            <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="0.0" mnemonicParsing="false" onAction="#initSearch" text="Initialize" />
-            <Button fx:id="btnStart" layoutX="234.0" layoutY="0.0" mnemonicParsing="false" onAction="#startSearch" text="Start" />
+            <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="0.0" mnemonicParsing="false" onAction="#initSearch" text="Initialize" />
+            <Button fx:id="btnStart" layoutX="278.0" layoutY="0.0" mnemonicParsing="false" onAction="#startSearch" text="Start" />
           </children>
         </AnchorPane>
       </children>
       <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="391.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="491.0" minWidth="10.0" prefWidth="491.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="0.0" prefWidth="0.0" />
       </columnConstraints>
       <rowConstraints>
