@@ -2,7 +2,7 @@ package lt.astar;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SearchPath {
+public class SearchPathEngine {
     private Map map;
     
     private ArrayList<Node> openList = new ArrayList<Node>();
@@ -17,7 +17,7 @@ public class SearchPath {
     private boolean isFound = false;
 
     /* constructor */
-    public SearchPath(Map map) {
+    public SearchPathEngine(Map map) {
     	this.map = map;
     	startNode = map.getStartNode();
     	endNode = map.getEndNode();

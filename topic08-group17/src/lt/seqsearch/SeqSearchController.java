@@ -51,18 +51,18 @@ public class SeqSearchController extends SearchArrayController {
 			textSearch.setText("You must enter initialize first!");
 		} else {
 			target = Integer.parseInt(input.getText());
-			engine = new SearchEngine(array, target);
+			engine = new SeqSearchEngine(array, target);
 	    	Timer timer = new Timer();
 			TimerTask task = new TimerTask() {
 				@Override
 				public void run() {
-					int loc = engine.getCurrentPosition();
+					int loc = ((SeqSearchEngine) engine).getCurrentPosition();
 					try {
 						Thread.sleep(1000);
 						// highlight
 						StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
 						Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
-						boolean status = engine.check();
+						boolean status = ((SeqSearchEngine) engine).check();
 						rec.setFill(Color.GREEN);
 						Thread.sleep(1000);
 						if (status == true) {

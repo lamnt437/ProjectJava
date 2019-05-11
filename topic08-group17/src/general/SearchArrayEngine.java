@@ -1,9 +1,9 @@
 package general;
 
 public abstract class SearchArrayEngine {
-	private int target;
-	private int[] array;
-	private int currentPosition = 0;
+	protected int target;
+	protected int[] array;
+	protected int currentPosition = 0;
 	
 	public SearchArrayEngine(int[] array, int target) {
 		this.target = target;
@@ -18,24 +18,6 @@ public abstract class SearchArrayEngine {
 		this.currentPosition = currentPosition;
 	}
 	
-//	public boolean check() {
-//		return target == array[getCurrentPosition()];
-//	}
-	
-	public abstract boolean check();
-	
-	public boolean isFinished() {
-		if(currentPosition == array.length ||
-				target == array[currentPosition])
-			return true;
-		return false;
-	}
-	
-	public void goNext() {
-		if(!isFinished())
-			currentPosition++;
-	}
-
 	public int getTarget() {
 		return target;
 	}
@@ -51,17 +33,20 @@ public abstract class SearchArrayEngine {
 	public void setArray(int[] array) {
 		this.array = array;
 	}
-
 	
-	
-	
-	
-//	public int search(int array[], int target) {
-//		int size = array.length;
-//		for(int i = 0; i < size; i++) {
-//			if(array[i] == target)
-//				return i;
-//		}
-//		return -1;
+//	public boolean isFinished() {
+//		if(currentPosition == array.length ||
+//				target == array[currentPosition])
+//			return true;
+//		return false;
 //	}
+	
+	public abstract boolean isFinished();
+	
+//	public void goNext() {
+//		if(!isFinished())
+//			currentPosition++;
+//	}
+	
+	public abstract void goNext();
 }

@@ -1,26 +1,17 @@
 package lt.binsearch;
 
 import general.SearchArrayController;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javafx.animation.Timeline;
-import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class BinSearchController extends SearchArrayController{
+public class BinSearchController extends SearchArrayController {
 	
 	public void createRectangles(int size) {
 		for (int i = 0; i < size; i++) {
@@ -65,14 +56,14 @@ public class BinSearchController extends SearchArrayController{
 		} else {
 			target = Integer.parseInt(input.getText());
 	    	System.out.println(target);
-	    	engine = new SearchEngine(array, target);
+	    	engine = new BinSearchEngine(array, target);
 	    	Timer timer = new Timer();
 			TimerTask task = new TimerTask() {
 				@Override
 				public void run() {
-					int loc = engine.getCurrentPosition();
-					int start = engine.getStart();
-					int end = engine.getEnd();
+					int loc = ((BinSearchEngine) engine).getCurrentPosition();
+					int start = ((BinSearchEngine) engine).getStart();
+					int end = ((BinSearchEngine) engine).getEnd();
 					// highlight
 					StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
 					Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
@@ -81,7 +72,7 @@ public class BinSearchController extends SearchArrayController{
 					try {
 						Thread.sleep(1000);
 						
-						int status = engine.check();
+						int status = ((BinSearchEngine) engine).check();
 						
 						if (status == 0) {
 							// highlight
@@ -109,7 +100,7 @@ public class BinSearchController extends SearchArrayController{
 						}
 						
 						if(engine.isFinished()) {
-							if (engine.getStart()> engine.getEnd()) {
+							if (((BinSearchEngine) engine).getStart()> ((BinSearchEngine) engine).getEnd()) {
 								textSearch.setText("Not Found!");
 							} else {
 								

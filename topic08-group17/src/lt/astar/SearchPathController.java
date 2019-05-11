@@ -1,4 +1,6 @@
 package lt.astar;
+
+import general.Controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -11,37 +13,24 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class SearchPathController implements Initializable {
-	@FXML
-	private GridPane gridpane;
-	
-	@FXML
-	private Button startBtn;
+public class SearchPathController extends Controller implements Initializable {
 	
 	@FXML
 	private Button pauseBtn;
 	
-	@FXML
-	private Button stopBtn;
-	
-	@FXML
-	private TextField textSearch;
-	
 	private int size = 10;
 	private int recSize = 50;
 	private Rectangle[][] recs = new Rectangle[size][size];
-	private SearchPath engine;
+	private SearchPathEngine engine;
 	private Map map = new Map();
 	private boolean paused = false;
-	
-	Timeline timeline = new Timeline();
+	private Timeline timeline = new Timeline();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -120,7 +109,7 @@ public class SearchPathController implements Initializable {
 	        
 	        
 	        /* running */
-	        engine = new SearchPath(map);
+	        engine = new SearchPathEngine(map);
 	        
 	        engine.init();
 	        

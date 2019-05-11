@@ -40,7 +40,7 @@
       <Button fx:id="pauseBtn" layoutX="125.0" layoutY="537.0" mnemonicParsing="false" onAction="#pauseSearch" text="Pause" />
       <Button fx:id="stopBtn" layoutX="224.0" layoutY="537.0" mnemonicParsing="false" onAction="#stopSearch" text="Stop" />
       <Button fx:id="resetBtn" layoutX="316.0" layoutY="537.0" mnemonicParsing="false" onAction="#resetSearch" text="Reset" />
-      <TextField fx:id="textInfo" editable="false" layoutX="34.0" layoutY="589.0" prefHeight="25.0" prefWidth="328.0" text="Click on the area above to add obstacles!" />
+      <TextField fx:id="textSearch" editable="false" layoutX="34.0" layoutY="589.0" prefHeight="25.0" prefWidth="328.0" text="Click on the area above to add obstacles!" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="20.0" layoutX="27.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" width="20.0" AnchorPane.bottomAnchor="40.0" />
       <Label layoutX="55.0" layoutY="643.0" text="Obstacle" AnchorPane.bottomAnchor="40.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="20.0" layoutX="115.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" width="20.0" AnchorPane.bottomAnchor="40.0" />

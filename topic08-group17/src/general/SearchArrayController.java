@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import lt.seqsearch.SearchEngine;
 
 public class SearchArrayController extends Controller {
 	@FXML
@@ -24,7 +23,7 @@ public class SearchArrayController extends Controller {
 	protected int flag = 0;
 	protected int size = 10;
 	protected List<StackPane> rectangles = new ArrayList<StackPane>();
-	protected SearchEngine engine;
+	protected SearchArrayEngine engine;
 	protected int[] array = new int[size];
 	protected int target = 1;
 }
