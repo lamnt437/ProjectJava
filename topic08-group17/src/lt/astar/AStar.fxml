@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
@@ -8,9 +9,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lt.astar.SearchPathController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lt.astar.SearchPathController">
    <children>
-      <GridPane fx:id="gridpane" onMouseClicked="#gridClicked" prefHeight="357.0" prefWidth="389.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane fx:id="gridpane" onMouseClicked="#gridClicked" prefHeight="357.0" prefWidth="389.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -53,5 +54,10 @@
       <Label layoutX="277.0" layoutY="643.0" text="Neighbor" AnchorPane.bottomAnchor="40.0" />
       <Label layoutX="364.0" layoutY="643.0" text="Current" AnchorPane.bottomAnchor="40.0" />
       <Label layoutX="443.0" layoutY="643.0" text="Path" AnchorPane.bottomAnchor="40.0" />
+      <TextArea editable="false" layoutX="794.0" layoutY="7.0" prefHeight="200.0" prefWidth="200.0" text="USER GUIDE FOR A* ALGORITHM VISUALIZATION&#10;&#10;1. By default, the start node is fixed at the top-left corner, and the end node is at the bottom-right corner.&#10;2. Click on squares on the grid to add obstacles to the map.&#10;3. When finishing adding, click Play to start running.&#10;4. During the run, you can click Pause to pause the animation and resume by clicking on Play.&#10;5. The f-cost of the each discovered node is displayed.&#10;6. When the search is finished, if there is a path, it will be highlighted by yellow color.&#10;7. You can stop the run by click Stop. When Stop button is clicked, all data of the current running session is deleted, but the map is kept the same.&#10;8. You can reset everything including the map by click Reset button and then create a new map from beginning." wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>
