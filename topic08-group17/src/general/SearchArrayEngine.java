@@ -34,19 +34,7 @@ public abstract class SearchArrayEngine {
 		this.array = array;
 	}
 	
-//	public boolean isFinished() {
-//		if(currentPosition == array.length ||
-//				target == array[currentPosition])
-//			return true;
-//		return false;
-//	}
-	
 	public abstract boolean isFinished();
-	
-//	public void goNext() {
-//		if(!isFinished())
-//			currentPosition++;
-//	}
 	
 	public abstract void goNext();
 }
