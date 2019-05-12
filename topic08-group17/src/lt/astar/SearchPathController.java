@@ -1,7 +1,6 @@
 package lt.astar;
 
 import general.Controller;
-import general.NodeCircle;
 import general.NodeRectangle;
 
 import java.net.URL;
@@ -28,7 +27,7 @@ public class SearchPathController extends Controller implements Initializable {
 	
 	private int size = 10;
 	private int recSize = 50;
-	private NodeCircle[][] recs = new NodeCircle[size][size];
+	private NodeRectangle[][] recs = new NodeRectangle[size][size];
 	private SearchPathEngine engine;
 	private Map map = new Map();
 	private boolean paused = false;
@@ -49,7 +48,7 @@ public class SearchPathController extends Controller implements Initializable {
 			/* add background */
 			for(int i = 0; i < size; i++) {		//row
 	        	for(int j = 0; j < size; j++) {	//col
-	        		recs[j][i] = new NodeCircle(Color.WHITE, (recSize - 2)/2);
+	        		recs[j][i] = new NodeRectangle(Color.WHITE, recSize - 2);
 			        
 			        
 			        GridPane.setRowIndex(recs[j][i].getNode(), i);
@@ -144,7 +143,7 @@ public class SearchPathController extends Controller implements Initializable {
 	                    			recs[i][j].setColor(Color.BLUE);
 	                    		}
 	                    		if(curNode.equals(temp)) {
-	                    			recs[i][j].setColor(Color.PINK);
+	                    			recs[i][j].setColor(Color.ORANGE);
 	                    		}
 	                    	}
 	                    }
@@ -218,7 +217,7 @@ public class SearchPathController extends Controller implements Initializable {
 		Node newNode = new Node(x, y);
 		boolean addStatus = map.addBorder(newNode);
 		if(addStatus) {
-			recs[y][x] = new NodeCircle(Color.BLACK, (recSize - 2)/2);
+			recs[y][x] = new NodeRectangle(Color.BLACK, recSize - 2);
 			
 			GridPane.setRowIndex(recs[y][x].getNode(), y);
 	        GridPane.setColumnIndex(recs[y][x].getNode(), x);
