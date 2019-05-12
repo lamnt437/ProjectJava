@@ -1,5 +1,6 @@
 package lt.binsearch;
 
+import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -9,6 +10,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class BinSearchController extends SearchArrayController {
+	
+	@Override
+	public void initArray(int[] array, int size) {
+		for (int i = 0; i < size; i++) {
+			array[i] = (int)(Math.random() * 50 + 1);
+		}
+		Arrays.sort(array);
+	}
 	
 	public void startSearch() {
 		if (input.getText() == null || input.getText().trim().isEmpty()) {
