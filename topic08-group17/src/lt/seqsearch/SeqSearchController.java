@@ -26,32 +26,32 @@ public class SeqSearchController extends SearchArrayController {
 					int loc = ((SeqSearchEngine) engine).getCurrentPosition();
 					try {
 						textSearch.setText("Traversing the array.");
-						Thread.sleep(2000);
+						Thread.sleep(1000);
 						int target = engine.getTarget();
-						Thread.sleep(2000);
+						Thread.sleep(1000);
 						// highlight
 						StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
 						Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
 						boolean status = ((SeqSearchEngine) engine).check();
 						rec.setFill(Color.GREEN);
-						Thread.sleep(2000);
+						Thread.sleep(1000);
 						if (status == true) {
 							// highlight
 							int cur = engine.getArray()[engine.getCurrentPosition()];
 							textSearch.setText("Checking if " + target + " = " + cur);
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 							textSearch.setText(target + "==" + cur);
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 							rec.setFill(Color.BLUE);
 							textSearch.setText("Found!");
 						} else {
 							int cur = engine.getArray()[engine.getCurrentPosition()];
 							textSearch.setText("Checking if " + target + " = " + cur);
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 							textSearch.setText(target + "!=" + cur);
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 							rec.setFill(Color.RED);
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 							textSearch.setText("Go to the next element.");
 						}
 						
@@ -60,7 +60,7 @@ public class SeqSearchController extends SearchArrayController {
 						else {
 							if (engine.getCurrentPosition() == (size - 1)) {
 								textSearch.setText("There is no element left!");
-								Thread.sleep(2000);
+								Thread.sleep(1000);
 								textSearch.setText(target + " is not found!");
 								cancel();
 							}
@@ -72,7 +72,7 @@ public class SeqSearchController extends SearchArrayController {
 					}
 				}
 			};
-			timer.schedule(task, 0, 2000);
+			timer.schedule(task, 0, 1000);
 		}   	
 	}
 }

@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="seqSearchAnchorPane" disable="false" focusTraversable="false" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="325.0" prefWidth="647.0" snapToPixel="true" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lt.binsearch.BinSearchController">
+<AnchorPane fx:id="seqSearchAnchorPane" disable="false" focusTraversable="false" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="503.0" prefWidth="917.0" snapToPixel="true" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lt.binsearch.BinSearchController">
   <!-- TODO Add Nodes -->
   <children>
     <GridPane fx:id="gridpane" alignment="CENTER" disable="false" layoutX="0.0" layoutY="0.0" prefHeight="205.0" prefWidth="647.0">
@@ -77,5 +78,28 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
+    <AnchorPane layoutX="4.0" layoutY="319.0" prefHeight="159.0" prefWidth="643.0">
+      <children>
+        <Label layoutX="83.0" layoutY="6.0" text="USER GUIDE FOR BINARY SEARCH ALGORITHM VISUALIZATION">
+          <font>
+            <Font name="System Bold" size="13.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label layoutX="10.0" layoutY="30.0" text="1. There is a status bar at the top of the pane to show information about the step and execution" />
+        <Label layoutX="10.0" layoutY="46.0" prefHeight="30.0" prefWidth="619.0" text="2. First, you initialize a sorted array by clicking the button “initialize”" />
+        <Label layoutX="10.0" layoutY="76.0" text="3. Then, you can enter the value you want to find in the input box" />
+        <Label layoutX="10.0" layoutY="98.0" text="4. Next, click “start” button to start the algorithm" />
+        <Label layoutX="11.0" layoutY="121.0" text="5. After the algorithm finish, you can repeat from step 2 to test in another array" />
+      </children>
+    </AnchorPane>
+    <AnchorPane layoutX="656.0" layoutY="0.0" prefHeight="503.0" prefWidth="261.0" style="-fx-border-color:black; -fx-border-left-width: 1; -fx-border-style: solid;">
+      <children>
+        <Label font="$x1" layoutX="14.0" layoutY="23.0" text="Binary Search Algorithm" />
+        <Label layoutX="13.0" layoutY="51.0" prefHeight="49.0" prefWidth="242.0" text="1. Compare input with the &#10; middle element." underline="false" />
+        <Label layoutX="13.0" layoutY="98.0" text="2. If i nput matches with middle &#10; element, we return the mid index." />
+        <Label layoutX="12.0" layoutY="135.0" text="3. Else If input is greater than the &#10;mid element, then input can only lie &#10;in right half subarray after the mid  &#10;element. So we recur for right half." />
+        <Label layoutX="12.0" layoutY="208.0" text="4. Else (input is smaller) recur for the &#10; left half." />
+      </children>
+    </AnchorPane>
   </children>
 </AnchorPane>

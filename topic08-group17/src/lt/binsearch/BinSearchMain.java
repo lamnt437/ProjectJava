@@ -15,7 +15,7 @@ public class BinSearchMain extends Application {
                     .getResource("BinSearch.fxml"));
  
             
-            stage.setTitle("Sequential Searching Algorithm Visualization");
+            stage.setTitle("Binary Searching Algorithm Visualization");
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.show();
