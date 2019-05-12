@@ -28,7 +28,7 @@ public class BinSearchController extends SearchArrayController {
 					int end = ((BinSearchEngine) engine).getEnd();
 					textSearch.setText("Next middle = (" + start + " + " + end + " )/2 =" + loc);
 					// highlight
-					StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
+					StackPane currentPane = (StackPane) arrayNode.getChildren().get(loc);
 					Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
 					rec.setFill(Color.GREEN);
 					int target = engine.getTarget();
@@ -57,7 +57,7 @@ public class BinSearchController extends SearchArrayController {
 							textSearch.setText("Eliminate right side of array and then check left side of array");
 							Thread.sleep(2000);
 							for(int i = loc; i <= end; i++) {
-								currentPane = (StackPane) arrayRec.getChildren().get(i);
+								currentPane = (StackPane) arrayNode.getChildren().get(i);
 								rec = (Rectangle) currentPane.getChildren().get(0);
 								rec.setFill(Color.RED);
 							}
@@ -72,7 +72,7 @@ public class BinSearchController extends SearchArrayController {
 							textSearch.setText("Eliminate left side of array and then check right side of array");
 							Thread.sleep(2000);
 							for(int i = start; i <= loc; i++) {
-								currentPane = (StackPane) arrayRec.getChildren().get(i);
+								currentPane = (StackPane) arrayNode.getChildren().get(i);
 								rec = (Rectangle) currentPane.getChildren().get(0);
 								rec.setFill(Color.RED);
 							}

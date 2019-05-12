@@ -30,7 +30,7 @@ public class SeqSearchController extends SearchArrayController {
 						int target = engine.getTarget();
 						Thread.sleep(2000);
 						// highlight
-						StackPane currentPane = (StackPane) arrayRec.getChildren().get(loc);
+						StackPane currentPane = (StackPane) arrayNode.getChildren().get(loc);
 						Rectangle rec = (Rectangle) currentPane.getChildren().get(0);
 						boolean status = ((SeqSearchEngine) engine).check();
 						rec.setFill(Color.GREEN);
